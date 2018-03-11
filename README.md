@@ -1,7 +1,7 @@
 # Ichimoku_All_Signals
 Display all signals of the Ichimoku indicator.
 
-[EURUSD-H1](EURUSD-H1.png)
+![EURUSD-H1](EURUSD-H1.png)
 
 <image src="https://github.com/chriswang2006/Ichimoku_All_Signals/blob/master/EURUSD-H1.png" >
 <p>
