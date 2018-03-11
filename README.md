@@ -2,11 +2,13 @@
 Display all signals of the Ichimoku indicator.
 
 <p/>
-<image src="https://github.com/chriswang2006/Ichimoku_All_Signals/blob/master/EURUSD-H1.png" >
-<p>
+(EURUSD-H1.png)
+
 
 <p>
-<image src="https://github.com/chriswang2006/Ichimoku_All_Signals/blob/master/EURCHF-H1.png" >
+  (EURCHF-H1.png)
+
 <p>
 <p>
-<image src="https://github.com/chriswang2006/Ichimoku_All_Signals/blob/master/EURGBP-H1.png" >
+  (EURGBP-H1.png)
+
