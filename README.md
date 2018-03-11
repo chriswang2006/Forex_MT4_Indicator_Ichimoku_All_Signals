@@ -1,6 +1,6 @@
 # Ichimoku_All_Signals
 
-Display all signals of the Ichimoku.
+Display all signals of the Ichimoku Kinko Hyo.
 
 
 
