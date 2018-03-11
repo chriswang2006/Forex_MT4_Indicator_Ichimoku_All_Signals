@@ -1,9 +1,8 @@
 # Ichimoku_All_Signals
 
-Display all signals of the Ichimoku Kinko Hyo.
-
-[more information about Ichimoku, go to here.](http://www.kumotrader.com/ichimoku_wiki/index.php?title=Main_Page)
+Display all signals of the Ichimoku Kinko Hyo.[More information about Ichimoku, go to here.](http://www.kumotrader.com/ichimoku_wiki/index.php?title=Main_Page)
  
+
 ![EURUSD-H1](EURUSD-H1.png)
 
 ![EURCHF-H1](EURCHF-H1.png)
