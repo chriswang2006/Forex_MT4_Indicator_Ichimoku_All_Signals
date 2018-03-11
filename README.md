@@ -1,5 +1,8 @@
 # Ichimoku_All_Signals
-Display all signals of the Ichimoku indicator.
+
+Display all signals of the Ichimoku.
+
+
 
 ![EURUSD-H1](EURUSD-H1.png)
 
