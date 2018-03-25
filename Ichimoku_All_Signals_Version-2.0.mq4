@@ -95,16 +95,16 @@ double PCDNBuffer[];    // Price,Cloud Sell
 
 //--- buffers Tenkan Sen
 
-double TKUPBuffer[]; //Tenkan,Kijun Buy
-double TKDNBuffer[];  //Tenkan,Kijun Sell
+double TKUPBuffer[];    //Tenkan,Kijun Buy
+double TKDNBuffer[];    //Tenkan,Kijun Sell
 
-double TCUPBuffer[]; //Tenkan,Cloud Buy
-double TCDNBuffer[];  //Tenkan,Cloud Sell
+double TCUPBuffer[];    //Tenkan,Cloud Buy
+double TCDNBuffer[];    //Tenkan,Cloud Sell
 
 //--- buffers Kijun Sen
 
-double KCUPBuffer[]; //Kijun,Cloud Buy
-double KCDNBuffer[];  //Kijun,Cloud Sell
+double KCUPBuffer[];      //Kijun,Cloud Buy
+double KCDNBuffer[];      //Kijun,Cloud Sell
 
 //--- buffers Senkou Span A
 double SSABUPBuffer[];    // Senkou Span A,B Buy
@@ -118,7 +118,7 @@ double PKCBuffer[];      // Price/Kumo Confirmation: UP=1,MD=0,DN=-1,
 
 
 
-extern int     Signal_Filter_Level=3;  // Weak=1,Neutral=2,Srong=3
+extern int Signal_Filter_Level=3;  // Weak=1,Neutral=2,Srong=3
 
 extern int Tenkan=9;   // Tenkan-sen
 extern int Kijun=26;   // Kijun-sen
@@ -127,28 +127,28 @@ extern int Senkou=52;  // Senkou Span
 
 
 
-extern bool  ShowChikouSpanPriceCross_0      =  true;
-extern bool  ShowChikouSpanTenkanSenCross_1  =  true;
-extern bool  ShowChikouSpanKijunSenCross_2   =  true;
-extern bool  ShowChikouSpanCloudCross_3      =  true;
+extern bool  ShowChikouSpanPriceCross_0         = true;
+extern bool  ShowChikouSpanTenkanSenCross_1     = true;
+extern bool  ShowChikouSpanKijunSenCross_2      = true;
+extern bool  ShowChikouSpanCloudCross_3         = true;
 
-extern bool  ShowPriceTenkanSenCross_4       =  true;
-extern bool  ShowPriceKijunSenCross_5        =  true;
-extern bool  ShowPriceCloudCross_6           =  true;
+extern bool  ShowPriceTenkanSenCross_4          = true;
+extern bool  ShowPriceKijunSenCross_5           = true;
+extern bool  ShowPriceCloudCross_6              = true;
 
-extern bool  ShowTenkanSenKijunSenCross_7    =  true;
-extern bool  ShowTenkanSenCloudCross_8       =  true;
+extern bool  ShowTenkanSenKijunSenCross_7       = true;
+extern bool  ShowTenkanSenCloudCross_8          = true;
 
-extern bool  ShowKijunSenCloudCross_9=true;
+extern bool  ShowKijunSenCloudCross_9           = true;
 
-extern bool  ShowSenkouSpanABCross_10=true;
+extern bool  ShowSenkouSpanABCross_10           = true;
 
-extern bool  EnableChikouSpanPriceConfirmation=true;
-extern bool  EnablePriceKumoConfirmation=true;
+extern bool  EnableChikouSpanPriceConfirmation  = true;
+extern bool  EnablePriceKumoConfirmation        = true;
 
-extern bool  EnableAlert=true;
+extern bool  EnableAlert                        = true;
 
-int Signal_Default_Level=1;
+int Signal_Default_Level                        = 1;
 
 datetime pTime;
 string short_name;
@@ -435,6 +435,8 @@ int OnInit(void)
 //---
    return(INIT_SUCCEEDED);
   }
+
+
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -479,7 +481,6 @@ int OnCalculate(const int rates_total,
       t1 = getTenkanSen(i+1);
       t0 = getTenkanSen(i);
 
-
       //
       // arrow 0
       //
@@ -499,6 +500,7 @@ int OnCalculate(const int rates_total,
             CPDNBuffer[i]=price_high;
            }
         }
+
       //
       // arrow 1 
       // 
@@ -520,6 +522,7 @@ int OnCalculate(const int rates_total,
 
            }
         }
+
       //
       // arrow 2
       //
@@ -548,7 +551,6 @@ int OnCalculate(const int rates_total,
       //
       // arrow 3
       //
-
       if(ShowChikouSpanCloudCross_3)
         {
          x1=getChikouSpan(i+Kijun+1);
@@ -572,6 +574,7 @@ int OnCalculate(const int rates_total,
 
            }
         }
+
       //
       // arrow 4
       //
@@ -601,7 +604,6 @@ int OnCalculate(const int rates_total,
       //
       // arrow 5
       //
-
       if(ShowPriceKijunSenCross_5)
         {
          x1=close[i+1];
@@ -622,6 +624,7 @@ int OnCalculate(const int rates_total,
 
            }
         }
+
       //
       // arrow 6
       //
@@ -785,7 +788,7 @@ int OnCalculate(const int rates_total,
          PKCBuffer[i]=0;
 
       //----------------------------------------------------
-      //      // Process filter
+      // Process filter
       //----------------------------------------------------
 
       // filter 0
@@ -851,6 +854,7 @@ int OnCalculate(const int rates_total,
          if(CPDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Chikou Span/Price Sell");
         }
+      
       // signal 1
       if(ShowChikouSpanTenkanSenCross_1)
         {
@@ -859,6 +863,7 @@ int OnCalculate(const int rates_total,
          if(CTDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Chikou Span/Tenkan Sen Sell");
         }
+      
       // signal 2
       if(ShowChikouSpanKijunSenCross_2)
         {
@@ -867,6 +872,7 @@ int OnCalculate(const int rates_total,
          if(CKDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Chikou Span/Kijun Sen Sell");
         }
+      
       // signal 3
       if(ShowChikouSpanCloudCross_3)
         {
@@ -875,6 +881,7 @@ int OnCalculate(const int rates_total,
          if(CCDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Chikou Span/Cloud Sell");
         }
+      
       // signal 4
       if(ShowPriceTenkanSenCross_4)
         {
@@ -883,6 +890,7 @@ int OnCalculate(const int rates_total,
          if(PTDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Price/Tenkan Sen Sell");
         }
+      
       // signal 5
       if(ShowPriceKijunSenCross_5)
         {
@@ -891,6 +899,7 @@ int OnCalculate(const int rates_total,
          if(PKDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Price/Kijun Sen Sell");
         }
+      
       // signal 6
       if(ShowPriceCloudCross_6)
         {
@@ -899,6 +908,7 @@ int OnCalculate(const int rates_total,
          if(PCDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Price/Cloud Sell");
         }
+      
       // signal 7
       if(ShowTenkanSenKijunSenCross_7)
         {
@@ -907,6 +917,7 @@ int OnCalculate(const int rates_total,
          if(TKDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Tenkan Sen/Kijun Sen Sell");
         }
+      
       // signal 8
       if(ShowTenkanSenCloudCross_8)
         {
@@ -915,6 +926,7 @@ int OnCalculate(const int rates_total,
          if(TCDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Tenkan Sen/Cloud Sell");
         }
+      
       // signal 9
       if(ShowKijunSenCloudCross_9)
         {
@@ -923,6 +935,7 @@ int OnCalculate(const int rates_total,
          if(KCDNBuffer[i]>0)
             Alert(Symbol()+" "+timeframeToString(Period())+" "+short_name+" Signal: Kijun Sen/Cloud Sell");
         }
+      
       // signal 10
       if(ShowSenkouSpanABCross_10)
         {
@@ -936,6 +949,7 @@ int OnCalculate(const int rates_total,
 //--- return value of prev_calculated for next call
    return(rates_total);
   }
+
 //+------------------------------------------------------------------+
 bool isNewBar()
   {
@@ -949,6 +963,7 @@ bool isNewBar()
 
    return(res);
   }
+
 //+------------------------------------------------------------------+
 string timeframeToString(int timeframe)
   {
@@ -982,16 +997,16 @@ string timeframeToString(int timeframe)
 
 double getChikouSpan(int index)
   {
-//return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_CHIKOUSPAN,index); 
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,4,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_CHIKOUSPAN,index); 
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,4,index);
   }
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getTenkanSen(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_TENKANSEN,index);
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,0,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_TENKANSEN,index);
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,0,index);
 
   }
 //+------------------------------------------------------------------+
@@ -999,8 +1014,8 @@ double getTenkanSen(int index)
 //+------------------------------------------------------------------+
 double getKijunSen(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_KIJUNSEN,index);
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,1,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_KIJUNSEN,index);
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,1,index);
 
   }
 //+------------------------------------------------------------------+
@@ -1008,8 +1023,8 @@ double getKijunSen(int index)
 //+------------------------------------------------------------------+
 double getSenkouSpanA(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANA,index); // Senkou Span A at time of latest closed bar of Chinkou span.
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,2,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANA,index); // Senkou Span A at time of latest closed bar of Chinkou span.
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,2,index);
 
 
   }
@@ -1018,8 +1033,8 @@ double getSenkouSpanA(int index)
 //+------------------------------------------------------------------+
 double getSenkouSpanB(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,3,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,3,index);
 
 
   }
@@ -1028,8 +1043,8 @@ double getSenkouSpanB(int index)
 //+------------------------------------------------------------------+
 double getSenkouSpanB_UP(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,7,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,7,index);
 
 
   }
@@ -1038,8 +1053,8 @@ double getSenkouSpanB_UP(int index)
 //+------------------------------------------------------------------+
 double getSenkouSpanB_DN(int index)
   {
-//   return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
-   return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,8,index);
+    return iIchimoku(NULL,0,Tenkan,Kijun,Senkou,MODE_SENKOUSPANB,index); // Senkou Span B at time of latest closed bar of Chinkou span.
+    //return iCustom(NULL,0,"Price_Action_Ichimoku_Fibo_V2",0,Tenkan,Kijun,Senkou,8,index);
 
 
   }
